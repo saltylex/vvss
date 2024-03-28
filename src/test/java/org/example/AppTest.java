@@ -42,8 +42,7 @@ public class AppTest
     /**
      * Rigourous Test :-)
      */
-    public void testAddStudentValid()
-    {
+    public void testAddStudentValid() {
         Validator<Student> studentValidator = new StudentValidator();
         Validator<Tema> temaValidator = new TemaValidator();
         Validator<Nota> notaValidator = new NotaValidator();
@@ -64,8 +63,7 @@ public class AppTest
         assertTrue(list.contains(added));
     }
 
-    public void testAddStudentInvalid()
-    {
+    public void testAddStudentInvalid() {
         Validator<Student> studentValidator = new StudentValidator();
         Validator<Tema> temaValidator = new TemaValidator();
         Validator<Nota> notaValidator = new NotaValidator();
@@ -77,6 +75,132 @@ public class AppTest
         Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
 
         int result = service.saveStudent("11", "aaa", 2);
+        assertEquals(result, 1);
+    }
+
+    public void testAddStudentInvalidGroup() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+
+        int result = service.saveStudent("11", "aaa", 10);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", "aaa", 999);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", "aaa", 111-1);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", "aaa", 937+1);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", "aaa", 0);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", "aaa", -1);
+        assertEquals(result, 1);
+    }
+
+    public void testAddStudentValidName() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+
+        int result = service.saveStudent("11", "asdf", 933);
+        assertEquals(result, 0);
+
+        Student added = new Student("11", "asdf", 933);
+        List<Student> list = new ArrayList<Student>();
+        Iterable<Student> students = service.findAllStudents();
+        students.forEach(list::add);
+        assertTrue(list.contains(added));
+
+        result = service.saveStudent("11", "" + "a", 933);
+        assertEquals(result, 0);
+
+        added = new Student("11", "" + "a", 933);
+        list = new ArrayList<Student>();
+        students = service.findAllStudents();
+        students.forEach(list::add);
+        assertTrue(list.contains(added));
+    }
+
+    public void testAddStudentInvalidName() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+
+        int result = service.saveStudent("11", "", 933);
+        assertEquals(result, 1);
+
+        result = service.saveStudent("11", null, 933);
+        assertEquals(result, 1);
+    }
+
+    public void testAddStudentValidId() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+
+        int result = service.saveStudent("11", "asdf", 933);
+        assertEquals(result, 0);
+
+        Student added = new Student("11", "asdf", 933);
+        List<Student> list = new ArrayList<Student>();
+        Iterable<Student> students = service.findAllStudents();
+        students.forEach(list::add);
+        assertTrue(list.contains(added));
+
+        result = service.saveStudent("11", "asdf", 933);
+        assertEquals(result, 0);
+
+        added = new Student("" + "11", "asdf", 933);
+        list = new ArrayList<Student>();
+        students = service.findAllStudents();
+        students.forEach(list::add);
+        assertTrue(list.contains(added));
+    }
+
+    public void testAddStudentInvalidId() {
+        Validator<Student> studentValidator = new StudentValidator();
+        Validator<Tema> temaValidator = new TemaValidator();
+        Validator<Nota> notaValidator = new NotaValidator();
+
+        StudentXMLRepository fileRepository1 = new StudentXMLRepository(studentValidator, "studenti.xml");
+        TemaXMLRepository fileRepository2 = new TemaXMLRepository(temaValidator, "teme.xml");
+        NotaXMLRepository fileRepository3 = new NotaXMLRepository(notaValidator, "note.xml");
+
+        Service service = new Service(fileRepository1, fileRepository2, fileRepository3);
+
+        int result = service.saveStudent("", "asdf", 933);
+        assertEquals(result, 1);
+
+        result = service.saveStudent(null, "asdf", 933);
         assertEquals(result, 1);
     }
 }
