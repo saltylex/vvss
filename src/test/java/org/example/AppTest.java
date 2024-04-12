@@ -37,94 +37,94 @@ public class AppTest
         return new TestSuite( AppTest.class );
     }
     public void testAddStudentValidGroup1() {
-        int result = service.saveStudent("11", "asdf", 111);
-        assertEquals(result, 0);
+        int result = service.saveStudent("1", "asdf", 111);
+        assertEquals(result, 1);
 
-        Student added = new Student("11", "asdf", 111);
+        Student added = new Student("1", "asdf", 111);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
         assertTrue(list.contains(added));
     }
     public void testAddStudentValidGroup2() {
-        int result = service.saveStudent("11", "asdf", 937);
-        assertEquals(result, 0);
+        int result = service.saveStudent("2", "asdf", 937);
+        assertEquals(result, 1);
 
-        Student added = new Student("11", "asdf", 937);
+        Student added = new Student("2", "asdf", 937);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
         assertTrue(list.contains(added));
     }
     public void testAddStudentInvalidGroup1() {
-        int result = service.saveStudent("11", "aaa", 10);
+        int result = service.saveStudent("3", "aaa", 10);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidGroup2() {
-        int result = service.saveStudent("11", "aaa", 999);
+        int result = service.saveStudent("3", "aaa", 999);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidGroup3() {
-        int result = service.saveStudent("11", "aaa", 111-1);
+        int result = service.saveStudent("3", "aaa", 111-1);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidGroup4() {
-        int result = service.saveStudent("11", "aaa", 937+1);
+        int result = service.saveStudent("3", "aaa", 937+1);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidGroup5() {
-        int result = service.saveStudent("11", "aaa", 0);
+        int result = service.saveStudent("3", "aaa", 0);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidGroup6() {
-        int result = service.saveStudent("11", "aaa", -1);
+        int result = service.saveStudent("3", "aaa", -1);
         assertEquals(result, 1);
     }
 
     public void testAddStudentValidName1() {
-        int result = service.saveStudent("11", "asdf", 933);
-        assertEquals(result, 0);
+        int result = service.saveStudent("4", "asdf", 933);
+        assertEquals(result, 1);
 
-        Student added = new Student("11", "asdf", 933);
+        Student added = new Student("4", "asdf", 933);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
         assertTrue(list.contains(added));
     }
     public void testAddStudentValidName2() {
-        int result = service.saveStudent("11", "" + "a", 933);
-        assertEquals(result, 0);
+        int result = service.saveStudent("5", "" + "a", 933);
+        assertEquals(result, 1);
 
-        Student added = new Student("11", "" + "a", 933);
+        Student added = new Student("5", "" + "a", 933);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
         assertTrue(list.contains(added));
     }
     public void testAddStudentInvalidName1() {
-        int result = service.saveStudent("11", "", 933);
+        int result = service.saveStudent("6", "", 933);
         assertEquals(result, 1);
     }
     public void testAddStudentInvalidName2() {
-        int result = service.saveStudent("11", null, 933);
+        int result = service.saveStudent("6", null, 933);
         assertEquals(result, 1);
     }
 
     public void testAddStudentValidId1() {
-        int result = service.saveStudent("11", "asdf", 933);
-        assertEquals(result, 0);
+        int result = service.saveStudent("7", "asdf", 933);
+        assertEquals(result, 1);
 
-        Student added = new Student("11", "asdf", 933);
+        Student added = new Student("7", "asdf", 933);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
         assertTrue(list.contains(added));
     }
     public void testAddStudentValidId2() {
-        int result = service.saveStudent("11", "asdf", 933);
-        assertEquals(result, 0);
+        int result = service.saveStudent("8", "asdf", 933);
+        assertEquals(result, 1);
 
-        Student added = new Student("" + "11", "asdf", 933);
+        Student added = new Student("" + "8", "asdf", 933);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
@@ -156,11 +156,11 @@ public class AppTest
         assertEquals(result, 1);
     }
     public void testAddTema5() {
-        int result = service.saveTema("3", "test", 4, 2);
+        int result = service.saveTema("9", "test", 4, 2);
         System.out.println(result);
-        assertEquals(result, 0);
+        assertEquals(result, 1);
 
-        Tema added = new Tema("3", "test", 4, 2);
+        Tema added = new Tema("9", "test", 4, 2);
         List<Tema> list = new ArrayList<>();
         Iterable<Tema> assignments = service.findAllTeme();
         assignments.forEach(list::add);
