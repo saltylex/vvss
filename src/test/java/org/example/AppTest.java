@@ -140,31 +140,30 @@ public class AppTest
     }
 
     public void testAddTema1() {
-        int result = service.saveTema(null, "test", 2, 4);
+        int result = service.saveTema(null, "test", 4, 2);
         assertEquals(result, 1);
     }
     public void testAddTema2() {
-        int result = service.saveTema("3", "", 2, 4);
+        int result = service.saveTema("3", "", 4, 2);
         assertEquals(result, 1);
     }
     public void testAddTema3() {
-        int result = service.saveTema("3", "test", 15, 4);
+        int result = service.saveTema("3", "test", 15, 2);
         assertEquals(result, 1);
     }
     public void testAddTema4() {
-        int result = service.saveTema("3", "test", 2, 15);
+        int result = service.saveTema("3", "test", 4, 15);
         assertEquals(result, 1);
     }
     public void testAddTema5() {
-        int result = service.saveTema("3", "test", 2, 4);
+        int result = service.saveTema("3", "test", 4, 2);
         System.out.println(result);
         assertEquals(result, 0);
 
-        Tema added = new Tema("3", "test", 2, 4);
+        Tema added = new Tema("3", "test", 4, 2);
         List<Tema> list = new ArrayList<>();
         Iterable<Tema> assignments = service.findAllTeme();
         assignments.forEach(list::add);
         assertTrue(list.contains(added));
     }
-
 }

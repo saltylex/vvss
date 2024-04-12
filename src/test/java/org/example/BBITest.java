@@ -38,10 +38,10 @@ public class BBITest
     }
 
     public void testAddStudent() {
-        int result = service.saveStudent("11", "stud1", 111);
+        int result = service.saveStudent("12", "stud1", 111);
         assertEquals(result, 1);
 
-        Student added = new Student("11", "stud1", 111);
+        Student added = new Student("12", "stud1", 111);
         List<Student> list = new ArrayList<Student>();
         Iterable<Student> students = service.findAllStudents();
         students.forEach(list::add);
@@ -49,12 +49,12 @@ public class BBITest
     }
 
     public void testAddAssignment() {
-        int result = service.saveTema("3", "desc", 3, 2);
+        int result = service.saveTema("4", "desc", 3, 2);
         assertEquals(result, 1);
     }
 
     public void testAddGrade() {
-        int result1 = service.saveTema("3", "desc", 2, 3);
+        int result1 = service.saveTema("3", "desc", 3, 2);
         int result2 = service.saveStudent("11", "stud1", 111);
 
         int result3 = service.saveNota("11", "3", 10, 3, "none");
