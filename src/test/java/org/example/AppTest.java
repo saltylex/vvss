@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
     extends TestCase {
     Validator<Student> studentValidator = new StudentValidator();
     Validator<Tema> temaValidator = new TemaValidator();
