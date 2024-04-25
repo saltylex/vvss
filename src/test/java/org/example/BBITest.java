@@ -54,9 +54,10 @@ public class BBITest
     }
 
     public void testAddGrade() {
-        int result1 = service.saveTema("10", "desc", 3, 2);
-        int result2 = service.saveStudent("15", "stud1", 111);
-        int result3 = service.saveNota("15", "10", 10, 3, "none");
+        int result1 = service.saveTema("4", "desc", 3, 2);
+        int result2 = service.saveStudent("12", "stud1", 111);
+
+        int result3 = service.saveNota("12", "4", 10, 3, "none");
         assertEquals(result3, 1);
     }
 
